@@ -1,8 +1,7 @@
-# APNet
-Official code for TIP submission "Person Re-identification via Attention Pyramid"
-
 # Person Re-identification via Attention Pyramid (APNet)
-This repo contains official PyTorch code implementation for TIP20' Submission: "Person Re-identification via Attention Pyramid"
+The official PyTorch code implementation for TIP20' Submission: "Person Re-identification via Attention Pyramid"
+
+This repo only contains channel-wise attention(SE-Layer) implementation, to reproduce the result of spatial attention, please refer to [RGA-S](https://github.com/microsoft/Relation-Aware-Global-Attention-Networks) by Microsoft. We also want to thank FastReid which is the codebase of our implementation.
 
 ## Requirements
 - Python 3.6+
