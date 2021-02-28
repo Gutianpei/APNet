@@ -15,6 +15,8 @@ To build all the dependency, please follow the instruction below.
 conda create -n apnet python=3.7 -y
 conda activate apnet
 pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 -f https://download.pytorch.org/whl/torch_stable.html
+conda install ignite -c pytorch
+
 ```
 ## Datasets
 ### Downloading
