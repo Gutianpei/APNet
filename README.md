@@ -5,11 +5,16 @@ This repo only contains channel-wise attention(SE-Layer) implementation, to repr
 
 ## Requirements
 - Python 3.6+
-- PyTorch 1.7
+- PyTorch 1.5+
+- CUDA 10.0+
 
-To install all python packages, please run the following command:
+Configuration other than the above setting is untested and we recommend to follow our setting.
+
+To build all the dependency, please follow the instruction below.
 ```
-pip install -r requirements.txt
+conda create -n apnet python=3.7 -y
+conda activate apnet
+pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 ## Datasets
 ### Downloading
