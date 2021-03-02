@@ -16,15 +16,23 @@ conda create -n apnet python=3.7 -y
 conda activate apnet
 pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 -f https://download.pytorch.org/whl/torch_stable.html
 conda install ignite -c pytorch
-
+git clone https://github.com/Gutianpei/APNet.git
+pip install -r requirements.txt
 ```
-## Datasets
+
+To download the pretrained ResNet-50 model, please run the following command in your python console:
+```
+from torchvision.models import resnet50
+resnet50(pretrained=True)
+```
+The model should be located in RESNET_PATH=```/home/YOURNAME/.cache/torch/hub/checkpoints/resnet50-19c8e357.pth``` or ```/home/YOURNAME/.cache/torch/checkpoints/resnet50-19c8e357.pth```
+
 ### Downloading
 - Market-1501
 - DukeMTMC-reID 
 - MSMT17
 ### Preparation
-After downloading the datasets above, move them to the `datasets/` folder in the project root directory, and rename dataset folders to 'market1501', 'duke' and 'msmt17' respectively. I.e., the `datasets/` folder should be organized as:
+After downloading the datasets above, move them to the `Datasets/` folder in the project root directory, and rename dataset folders to 'market1501', 'duke' and 'msmt17' respectively. I.e., the `Datasets/` folder should be organized as:
 ```
 |-- market1501
     |-- bounding_box_train
@@ -42,10 +50,12 @@ After downloading the datasets above, move them to the `datasets/` folder in the
 
 ## Usage
 ### Training
+Change the PRETRAIN_PATH parameter in configs/default.yml to your RESNET_PATH
+To train with different pyramid level, please edit LEVEL parareter in configs/default.yml
 ```
-bash demo.sh
+sh train.sh
 ```
 ### Evaluation
 ```
-python eval.py
+sh test.sh
 ```
