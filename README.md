@@ -3,6 +3,13 @@ The official PyTorch code implementation for TIP20' Submission: "Person Re-ident
 
 This repo only contains channel-wise attention(SE-Layer) implementation, to reproduce the result of spatial attention in our paper, please refer to [RGA-S](https://github.com/microsoft/Relation-Aware-Global-Attention-Networks) by Microsoft and simply change the attention agent. We also want to thank FastReid which is the codebase of our implementation.
 
+## Introduction
+Recently, attention mechanism has been widely used in the ReID system to facilitate high-performance identification and demonstrates the powerful representation ability by discovering discriminative regions and mitigating the misalignment. However, detecting the salient regions with the attention model is confronted with the dilemma to jointly capture both coarse and fine-grained clues, since the focus varies as the image scale changes. To address the above issue, we propose an effective attention pyramid networks (APNet) to jointly learn the attentions under different scales. We validate our method in Market1501, DukeMTMC and MSMT17 datasets, and our method shows a superior performance on all the datasets. Please see the Figure1 below and our paper for the method detail.
+
+![image](https://github.com/Gutianpei/APNet/blob/main/images/github_main_graph.png)
+Figure 1: The architecture of Attention Pyramid Networks (APNet). Our APNet adopts the “split-attend-merge-stack” principle, which first splits the feature maps into multiple parts, obtains the attention map of each part, and the attention map for current pyramid level is constructed by merging each attention map. Then in deeper pyramid level, we split the features into more fine-grained parts and learn the fine-grained attention guiding by coarse attentions. Finally, attentions with different granularities are stacked as attention pyramid and applies to original input feature by element-wise product.
+
+
 ## Requirements
 - Python 3.6+
 - PyTorch 1.5+
@@ -59,3 +66,13 @@ sh train.sh
 ```
 sh test.sh
 ```
+
+## Result
+|    Dataset     | Top-1 |  mAP  |
+| :------------: | :---: | :---: |
+|  Market-1501   | 96.2 | 90.5 |
+| DukeMTMC-Re-ID | 90.4 | 81.5 |
+|     MSMT17     | 83.7 | 63.5 |
+
+![image](https://github.com/Gutianpei/APNet/blob/main/images/github_vis.png)
+Figure 2: Visualizations of the attention maps with different pyramid level. We adopt the Grad-CAM to visualize the learned attention maps of our attention pyramid. For each sample, from left to right, we show the input image, attention of first level pyramid, attention of second level pyramid. We can observe that attentions in different pyramid levels capture the salient clues of different scales. Best viewed in color.
