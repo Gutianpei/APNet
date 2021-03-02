@@ -77,4 +77,4 @@ sh test.sh
 |     MSMT17     | 83.7 | 63.5 |
 
 ![image](https://github.com/Gutianpei/APNet/blob/main/images/github_vis.png)
-Figure 2: Visualizations of the attention maps with different pyramid level. We adopt the Grad-CAM to visualize the learned attention maps of our attention pyramid. For each sample, from left to right, we show the input image, attention of first level pyramid, attention of second level pyramid. We can observe that attentions in different pyramid levels capture the salient clues of different scales. Best viewed in color.
+Figure 2: Visualizations of the attention maps with different pyramid level. We adopt the Grad-CAM to visualize the learned attention maps of our attention pyramid. For each sample, from left to right, we show the input image, attention of first level pyramid, attention of second level pyramid. We can observe that attentions in different pyramid levels capture the salient clues of different scales.
